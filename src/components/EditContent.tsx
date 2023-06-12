@@ -1,5 +1,5 @@
-import {EditEvent, WebContent} from '@/app/types';
-import {useEffect, useRef} from 'react';
+import { EditEvent, WebContent } from '@/domain/types';
+import { useEffect, useRef } from 'react';
 
 export function EditContent(props: {
 	content: WebContent;

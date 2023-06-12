@@ -1,4 +1,4 @@
-import {WebContent} from '@/app/types';
+import { WebContent } from '@/domain/types';
 
 interface Props {
 	content: WebContent;

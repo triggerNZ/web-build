@@ -1,10 +1,10 @@
 'use client';
 
-import {PreviewContent} from '@/components/PreviewContent';
-import {EditEvent, TailwindClass, Text, WebContent} from './types';
-import {Dispatch, SetStateAction, useState} from 'react';
-import {EditContent} from '@/components/EditContent';
-import {TailwindClasses} from '@/components/TailwindClasses';
+import { PreviewContent } from '@/components/PreviewContent';
+import { EditEvent, TailwindClass, Text, WebContent } from '../domain/types';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { EditContent } from '@/components/EditContent';
+import { TailwindClasses } from '@/components/TailwindClasses';
 
 interface State {
 	content: WebContent;
@@ -16,7 +16,7 @@ function onEdit(evt: EditEvent, modState: Dispatch<SetStateAction<State>>) {
 		modState(s => {
 			switch (s.content.contentTag) {
 				case 'text':
-					return {...s, content: Text(evt.newText)};
+					return { ...s, content: Text(evt.newText) };
 			}
 		});
 	}
@@ -26,7 +26,7 @@ function setClasses(
 	classes: TailwindClass[],
 	modState: Dispatch<SetStateAction<State>>,
 ) {
-	modState(s => ({...s, content: {...s.content, classes}}));
+	modState(s => ({ ...s, content: { ...s.content, classes } }));
 }
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
 					className="w-1/2 p-4"
 					onClick={e => {
 						console.log('clicked outside');
-						modState(s => ({...s, editing: false}));
+						modState(s => ({ ...s, editing: false }));
 					}}
 				>
 					{state.editing ? (
@@ -55,7 +55,7 @@ export default function Home() {
 					) : (
 						<PreviewContent
 							content={state.content}
-							onStartEditing={() => modState(s => ({...s, editing: true}))}
+							onStartEditing={() => modState(s => ({ ...s, editing: true }))}
 						/>
 					)}
 				</div>
